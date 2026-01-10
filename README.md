@@ -227,8 +227,31 @@ O projeto inclui um workflow do GitHub Actions (`.github/workflows/deploy.yaml`)
 - Faz deploy automático quando um PR é mergeado na branch `main`
 - Utiliza OIDC para autenticação com AWS (sem necessidade de credenciais)
 - Requer os seguintes secrets configurados no GitHub:
-  - `AWS_OIDC_ROLE`: ARN da role IAM para OIDC
-  - `AWS_REGION`: Região AWS para deploy
+
+### Secrets Obrigatórios:
+
+1. **`AWS_OIDC_ROLE`**: ARN da role IAM para autenticação OIDC
+2. **`AWS_REGION`**: Região AWS para deploy (ex: `us-east-1`)
+
+### Secrets Opcionais (para Route53):
+
+Se você estiver usando Route53 para domínio customizado, configure também:
+
+3. **`HOSTED_ZONE_ID`**: ID da Hosted Zone do Route53 (ex: `Z0668887TY4Q2EPA5FWL`)
+4. **`ROUTE53_DOMAIN_NAME`**: Nome do domínio (ex: `marciocadev.com`)
+5. **`ROUTE53_SUBDOMAIN`**: Subdomínio opcional (ex: `s3website`)
+
+### Como Configurar Secrets no GitHub:
+
+1. Acesse seu repositório no GitHub
+2. Vá em **Settings** → **Secrets and variables** → **Actions**
+3. Clique em **New repository secret**
+4. Adicione cada secret com seu respectivo valor:
+   - Name: `HOSTED_ZONE_ID`
+   - Secret: `Z0668887TY4Q2EPA5FWL` (seu ID real)
+5. Repita para os outros secrets necessários
+
+**⚠️ Nota**: Os valores nos secrets do GitHub têm prioridade sobre o arquivo `.env` local durante o deploy no CI/CD.
 
 ## 🔐 Segurança
 

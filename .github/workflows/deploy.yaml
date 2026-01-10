@@ -30,7 +30,11 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Synthesize CloudFormation template
+        env:
+          HOSTED_ZONE_ID: ${{ secrets.HOSTED_ZONE_ID }}
         run: npx cdk synth --quiet --output "cdk.out"
 
       - name: Deploy CDK stacks
+        env:
+          HOSTED_ZONE_ID: ${{ secrets.HOSTED_ZONE_ID }}
         run: npx cdk deploy --all --app "cdk.out" --require-approval never

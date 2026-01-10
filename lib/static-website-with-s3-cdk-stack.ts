@@ -30,12 +30,12 @@ export const DEFAULT_EXPORT_NAME = 'StaticWebsiteWithS3Url';
 
 /**
  * Configuração padrão do Route53 (opcional - pode ser sobrescrita via props)
- * Valores são lidos das variáveis de ambiente do arquivo .env
+ * Valores são lidos das variáveis de ambiente (arquivo .env local ou secrets do GitHub Actions)
  */
 export const DEFAULT_ROUTE53_CONFIG: Route53Config = {
-  domainName: process.env.ROUTE53_DOMAIN_NAME || 'marciocadev.com',
-  hostedZoneId: process.env.ROUTE53_HOSTED_ZONE_ID || process.env.HOSTED_ZONE_ID!,
-  subdomain: process.env.ROUTE53_SUBDOMAIN || 's3website',
+  domainName: 'marciocadev.com',
+  hostedZoneId: process.env.HOSTED_ZONE_ID!,
+  subdomain: 's3website',
 };
 
 /**
