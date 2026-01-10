@@ -237,7 +237,7 @@ O projeto inclui um workflow do GitHub Actions (`.github/workflows/deploy.yaml`)
 
 Se você estiver usando Route53 para domínio customizado, configure também:
 
-3. **`HOSTED_ZONE_ID`**: ID da Hosted Zone do Route53 (ex: `Z0668887TY4Q2EPA5FWL`)
+3. **`HOSTED_ZONE_ID`**: ID da Hosted Zone do Route53
 4. **`ROUTE53_DOMAIN_NAME`**: Nome do domínio (ex: `marciocadev.com`)
 5. **`ROUTE53_SUBDOMAIN`**: Subdomínio opcional (ex: `s3website`)
 
@@ -248,7 +248,7 @@ Se você estiver usando Route53 para domínio customizado, configure também:
 3. Clique em **New repository secret**
 4. Adicione cada secret com seu respectivo valor:
    - Name: `HOSTED_ZONE_ID`
-   - Secret: `Z0668887TY4Q2EPA5FWL` (seu ID real)
+   - Secret: `XXXXXXXXXXXXXXXXXXXX` (seu ID real)
 5. Repita para os outros secrets necessários
 
 **⚠️ Nota**: Os valores nos secrets do GitHub têm prioridade sobre o arquivo `.env` local durante o deploy no CI/CD.
