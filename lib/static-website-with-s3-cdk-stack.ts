@@ -5,10 +5,10 @@ import { Construct } from 'constructs';
 import { join } from 'path';
 
 export interface StaticWebsiteWithS3CdkStackProps extends StackProps {
-  readonly bucketName: string;
-  readonly websiteIndexDocument: string;
-  readonly websiteDirectory: string;
-  readonly exportName: string;
+  readonly bucketName?: string;
+  readonly websiteIndexDocument?: string;
+  readonly websiteDirectory?: string;
+  readonly exportName?: string;
 }
 
 export const DEFAULT_BUCKET_NAME = 'static-website-with-cdk';
