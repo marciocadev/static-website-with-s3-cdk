@@ -8,7 +8,7 @@ export class StaticWebsiteWithS3CdkStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const bucket = new Bucket(this, "static-website-with-s3", {
+    const bucket = new Bucket(this, "StaticWebsiteWithS3Bucket", {
       bucketName: "static-website-with-cdk",
       websiteIndexDocument: "index.html",
       publicReadAccess: true,
@@ -17,12 +17,12 @@ export class StaticWebsiteWithS3CdkStack extends Stack {
       removalPolicy: RemovalPolicy.DESTROY,
     });
 
-    new BucketDeployment(this, "deploy-website", {
+    new BucketDeployment(this, "StaticWebsiteWithS3BucketDeployment", {
       sources: [Source.asset(join(__dirname, "./website"))],
       destinationBucket: bucket
     });
 
-    new CfnOutput(this, "website-url", {
+    new CfnOutput(this, "StaticWebsiteWithS3Url", {
       value: bucket.bucketWebsiteUrl,
       exportName: "static-website-with-s3-url"
     })
